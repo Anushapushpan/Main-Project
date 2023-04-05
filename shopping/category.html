@@ -51,6 +51,13 @@
 {% endif %}
 
 
+  <script>
+    const colorSelect = document.querySelector('#color-select');
+    const videoContainer = document.querySelector('#video-container');
+    const video = document.createElement('video');
+    </script>
+
+
 <div class="container">
     <div class="row mx_auto">
         {% for product in products.object_list %}
@@ -59,18 +66,28 @@
                 <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
             <div class="card-body"><br>
                 <h4><b>{{product.name}}</b></h4>
-                <p>$ {{product.price}}</p>
+                <p>Rs. {{product.price}}</p>
                 {% if product.stock <= 0 %}
         <p class="text-justify my_prod_text"><b><font color="red">Out of Stock</font> </b></p>
         {% else %}
 
                 <a class="button" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
+<!--                <a class="button" href="{% url 'cart:tryon' %}"><i class="fa fa-camera"></i> &nbsp;Try On</a>-->
  {% if product.is_tryon_eligible %}
-                <a class="button" href="#"><i class="fa fa-camera"></i> &nbsp;Try On</a>
 
+<a class="button" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-camera"></i> &nbsp;Try On
+  </a>
+                <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+<p><a href="{% url 'cart:tryon' %}"><button class="circle-btn" ></button> &nbsp;</a>
+    <a href="{% url 'cart:tryon_pink' %}"><button class="circle-btn1"></button> </a>&nbsp;
+    <a href="{% url 'cart:tryon_red' %}">   <button class="circle-btn2"></button></a></p>
+    </div>
+    </div>
                 {% endif %}
 
-<!--                <button class="button-89" role="button"><a href="{% url 'cart:add_cart' product.id %}">Add to Cart</a></button>-->
+<!--                 <button class="button-89" role="button"><a href="{% url 'cart:add_cart' product.id %}">Add to Cart</a></button>-->
         {% endif %}
             </div>
             </div>

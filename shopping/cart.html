@@ -51,12 +51,12 @@
                     <br>
                     ID: {{cart_item.product.id}}
                     <br>
-                    Price: $ {{cart_item.product.price}}
+                    Price: Rs. {{cart_item.product.price}}
                     <br>
-                    Qty : {{cart_item.quantity}} x $ {{cart_item.product.price}}
+                    Qty : {{cart_item.quantity}} x Rs. {{cart_item.product.price}}
                 </td>
                 <td>
-                    Total  ${{cart_item.sub_total}}
+                    Total  Rs.{{cart_item.sub_total}}
                 </td>
                 {% if cart_item.quantity < cart_item.product.stock %}
                 <td>
@@ -93,7 +93,7 @@
             </td>
 
             <td>
-                {{price}}
+               Rs.{{price}}
             </td>
 
         </tr>
